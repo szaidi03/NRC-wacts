@@ -1,0 +1,69 @@
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.content-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+mat-card {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+mat-card-content {
+  padding: 16px 0;
+}
+
+button[mat-button],
+button[mat-raised-button] {
+  margin-right: 8px;
+}
+
+// Examples of theming specific components
+.custom-card {
+  border-left: 4px solid rgb(66, 94, 113);
+}
+
+// Example of a themed section
+.themed-section {
+  background-color: rgba(66, 94, 113, 0.05);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+mat-toolbar {
+  background-color: white;
+  color: #0761a5;
+}
+
+mat-toolbar.secondary-toolbar {
+  mat-icon {
+    color: white;
+  }
+
+  height: 56px;
+  background-color: #0761a5;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.secondary-toolbar .left-section {
+  display: flex;
+  align-items: center;
+}
+
+.secondary-toolbar .left-section .hamburger-icon {
+  margin-right: 8px;
+}
+
+.secondary-toolbar .right-section {
+  display: flex;
+  align-items: center;
+}

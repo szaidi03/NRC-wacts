@@ -1,0 +1,4 @@
+{
+  "buttonOverrideType": "protected",
+  "manualPrimaryColor": "my-theme.$primary-palette"
+}
