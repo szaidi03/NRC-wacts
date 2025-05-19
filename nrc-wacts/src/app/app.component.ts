@@ -1,9 +1,11 @@
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+    MatRippleModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
