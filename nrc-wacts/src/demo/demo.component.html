@@ -1,0 +1,39 @@
+   <div class="flex flex-col  w-full h-full">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Angular Material Theme Demo</mat-card-title>
+          <mat-card-subtitle
+            >Custom theme with specified colors</mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            This is a demonstration of Angular Material with a custom theme.
+          </p>
+          <p>Primary Color: rgb(66, 94, 113)</p>
+          <p>Background Color: rgb(226, 232, 240)</p>
+          <p>Component Background: White</p>
+
+          <div class="themed-section">
+            <h3>Theme Color Examples</h3>
+            <button mat-button color="primary">PRIMARY</button>
+            <button mat-button color="accent">ACCENT</button>
+            <button mat-button color="warn">WARN</button>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary">PRIMARY BUTTON</button>
+          <button mat-raised-button color="primary">RAISED BUTTON</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="custom-card">
+        <mat-card-header>
+          <mat-card-title>Custom Styled Card</mat-card-title>
+          <mat-card-subtitle>With primary color border</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>This card has a custom border using the primary color.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>

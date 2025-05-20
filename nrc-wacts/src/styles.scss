@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use '../_theme-colors' as my-theme;
+@import "tailwindcss";
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
@@ -25,8 +26,123 @@ body {
 @include mat.button-overrides((
   protected-container-color: #0761a5,
   protected-label-text-color: white,
-
+  protected-container-shape: 6px,
+  outlined-container-shape: 6px,
+  filled-container-shape: 6px,
+  text-container-shape: 6px,
   protected-hover-state-layer-opacity: 0.08,
   protected-focus-state-layer-opacity: 0.12,
   protected-pressed-state-layer-opacity: 0.16
 ));
+
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.content-container {
+  padding: 20px 20px 20px 0px;
+}
+
+mat-card {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+mat-card-content {
+  padding: 20px;
+}
+
+button[mat-button],
+button[mat-raised-button] {
+  margin-right: 8px;
+}
+
+// Examples of theming specific components
+.custom-card {
+  border-left: 4px solid rgb(66, 94, 113);
+}
+
+// Example of a themed section
+.themed-section {
+  background-color: rgba(66, 94, 113, 0.05);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+mat-toolbar {
+  background-color: white;
+  color: #0761a5;
+}
+
+mat-toolbar.secondary-toolbar {
+  mat-icon {
+    color: white;
+  }
+
+  height: 56px;
+  background-color: #0761a5;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.secondary-toolbar .left-section {
+  display: flex;
+  align-items: center;
+}
+
+.secondary-toolbar .left-section .hamburger-icon {
+  margin-right: 8px;
+}
+
+.secondary-toolbar .right-section {
+  display: flex;
+  align-items: center;
+}
+
+mat-drawer-container.drawer-container {
+  background-color: rgb(226, 232, 240); /* Universal background color */
+}
+
+mat-drawer.custom-drawer {
+  background-color: rgb(226, 232, 240); /* Universal background color */
+  padding: 0px;
+  width: 331px !important;
+
+  .mat-mdc-card {
+    margin: 20px 10px 20px 20px !important;
+    width: 300px !important;
+  }
+
+  .mat-mdc-card-content {
+    padding: 0px !important;
+  }
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+}
+
+.nav-item:last-child {
+  border-bottom: none;
+}
+
+.nav-item mat-icon {
+  margin-right: 16px;
+  color: #0761a5;
+}
+
+.nav-item span {
+  font-size: 16px;
+  color: #0761a5;
+}

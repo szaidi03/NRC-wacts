@@ -3,7 +3,7 @@
 }
 
 .content-container {
-  padding: 20px;
+  padding: 20px 20px 20px 0px;
 }
 
 mat-card {
@@ -74,10 +74,10 @@ mat-drawer-container.drawer-container {
 mat-drawer.custom-drawer {
   background-color: rgb(226, 232, 240); /* Universal background color */
   padding: 0px;
-  width: 321px !important;
+  width: 331px !important;
 
   .mat-mdc-card {
-    margin: 20px 0px 20px 20px !important;
+    margin: 20px 10px 20px 20px !important;
     width: 300px !important;
   }
 
@@ -107,4 +107,14 @@ mat-drawer.custom-drawer {
 .nav-item span {
   font-size: 16px;
   color: #0761a5;
+}
+
+.nav-item.active {
+  border-left: 3px solid #0761a5;
+  font-weight: 500;
+  color: black !important;
+
+  span{
+    color: black !important;
+  }
 }
