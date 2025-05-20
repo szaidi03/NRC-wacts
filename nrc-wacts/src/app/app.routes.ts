@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadComponent: () => import('../demo/demo.component').then(m => m.DemoComponent),
+    loadComponent: () => import('../dashboard/dashboard.component').then(m => m.DashboardComponent),
     data: { name: 'Dashboard' },
   },
   {

@@ -1,40 +1,60 @@
-@use '@angular/material' as mat;
-@use '../_theme-colors' as my-theme;
+@use "@angular/material" as mat;
+@use "../_theme-colors" as my-theme;
 @import "tailwindcss";
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
 html {
-  @include mat.theme((
-     color: (
-      primary: my-theme.$primary-palette,
-      tertiary: my-theme.$tertiary-palette,
-    ),
-    typography: Roboto,
-    density: 0
-  ));
+  @include mat.theme(
+    (
+      color: (
+        primary: my-theme.$primary-palette,
+        tertiary: my-theme.$tertiary-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
 }
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: rgb(226, 232, 240);
 }
 
-// Override styles for specific Material components
-@include mat.button-overrides((
-  protected-container-color: #0761a5,
-  protected-label-text-color: white,
-  protected-container-shape: 6px,
-  outlined-container-shape: 6px,
-  filled-container-shape: 6px,
-  text-container-shape: 6px,
-  protected-hover-state-layer-opacity: 0.08,
-  protected-focus-state-layer-opacity: 0.12,
-  protected-pressed-state-layer-opacity: 0.16
-));
+:root {
+  // Override styles for specific Material components
+  @include mat.button-overrides(
+    (
+      protected-container-color: #1d326d,
+      protected-label-text-color: white,
+      protected-container-shape: 6px,
+      outlined-container-shape: 6px,
+      filled-container-shape: 6px,
+      text-container-shape: 6px,
+      protected-hover-state-layer-opacity: 0.08,
+      protected-focus-state-layer-opacity: 0.12,
+      protected-pressed-state-layer-opacity: 0.16,
+    )
+  );
 
+  @include mat.table-overrides(
+    (
+      background-color: none,
+      header-headline-color: white,
+    )
+  );
+
+  .mat-mdc-header-row {
+    background-color: #1d326d !important;
+    height: 40px !important;
+  }
+}
 
 .toolbar-spacer {
   flex: 1 1 auto;
@@ -47,7 +67,7 @@ body {
 mat-card {
   margin-bottom: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   width: 100%;
 }
 
@@ -75,7 +95,7 @@ button[mat-raised-button] {
 
 mat-toolbar {
   background-color: white;
-  color: #0761a5;
+  color: #1d326d;
 }
 
 mat-toolbar.secondary-toolbar {
@@ -84,7 +104,7 @@ mat-toolbar.secondary-toolbar {
   }
 
   height: 56px;
-  background-color: #0761a5;
+  background-color: #1d326d;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -139,10 +159,10 @@ mat-drawer.custom-drawer {
 
 .nav-item mat-icon {
   margin-right: 16px;
-  color: #0761a5;
+  color: #1d326d;
 }
 
 .nav-item span {
   font-size: 16px;
-  color: #0761a5;
+  color: #1d326d;
 }
