@@ -26,9 +26,15 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: rgb(226, 232, 240);
   @include mat.form-field-density(-4);
+
 }
 
 :root {
+
+  .mat-mdc-text-field-wrapper {
+    background-color: rgba(234, 235, 236, 0.336) !important;
+  }
+
   .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
@@ -79,7 +85,7 @@ body {
 
   @include mat.paginator-overrides(
     (
-      container-background-color: rgb(242, 243, 250),
+      container-background-color: white,
     )
   );
 
@@ -102,6 +108,7 @@ mat-card {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   width: 100%;
+  background-color: white !important;
 }
 
 mat-card-content {

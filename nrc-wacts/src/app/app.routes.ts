@@ -28,7 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'help-feedback',
-    loadComponent: () => import('../demo/demo.component').then(m => m.DemoComponent),
+    loadComponent: () => import('../help-feedback/help-feedback.component').then(m => m.HelpFeedbackComponent),
     data: { name: 'Help & Feedback' },
   },
   {
