@@ -13,7 +13,7 @@ export const routes: Routes = [
   },
   {
     path: 'meeting-search',
-    loadComponent: () => import('../demo/demo.component').then(m => m.DemoComponent),
+    loadComponent: () => import('../meeting-search/meeting-search.component').then(m => m.MeetingSearchComponent),
     data: { name: 'Meeting Search' },
   },
   {

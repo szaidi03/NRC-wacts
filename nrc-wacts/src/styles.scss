@@ -25,9 +25,36 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: rgb(226, 232, 240);
+  @include mat.form-field-density(-4);
 }
 
 :root {
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  .dense-input {
+    @include mat.form-field-density(-4);
+  }
+  .compact-input {
+    @include mat.form-field-density(-2);
+    .mat-mdc-text-field-wrapper {
+      height: 48px !important;
+    }
+  }
+
+  .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__notch {
+    border-right-width: 0px !important;
+  }
   // Override styles for specific Material components
   @include mat.button-overrides(
     (
@@ -47,6 +74,12 @@ body {
     (
       background-color: none,
       header-headline-color: white,
+    )
+  );
+
+  @include mat.paginator-overrides(
+    (
+      container-background-color: rgb(242, 243, 250),
     )
   );
 

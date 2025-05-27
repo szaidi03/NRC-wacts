@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatRippleModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,14 +18,20 @@ import { MatTableModule } from '@angular/material/table';
     MatSidenavModule,
     MatRippleModule,
     MatTableModule,
+    MatPaginatorModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewInit {
+  @ViewChild('upcomingMeetingsPaginator', { static: false })
+  upcomingMeetingsPaginator!: MatPaginator;
+  @ViewChild('recentFeedbackPaginator', { static: false })
+  recentFeedbackPaginator!: MatPaginator;
+
   recentFeedbackColumns: string[] = ['type', 'date', 'summary'];
 
-  recentFeedbackData = [
+  recentFeedbackData = new MatTableDataSource([
     {
       type: 'Feature Request',
       date: '5/1/2025',
@@ -35,7 +42,7 @@ export class DashboardComponent {
       date: '5/7/2025',
       summary: 'Time zone shows incorrectly in meeting viewer.',
     },
-  ];
+  ]);
 
   displayedColumns: string[] = [
     'meetingTitle',
@@ -44,7 +51,8 @@ export class DashboardComponent {
     'sessionTime',
     'location',
   ];
-  dataSource = [
+
+  dataSource = new MatTableDataSource([
     {
       meetingTitle: 'Reactor Core Safety Review',
       meetingType: 'Subcommittee',
@@ -59,5 +67,10 @@ export class DashboardComponent {
       sessionTime: '6/5/2025 9:00 AM',
       location: 'Room 203',
     },
-  ];
+  ]);
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.upcomingMeetingsPaginator;
+    this.recentFeedbackData.paginator = this.recentFeedbackPaginator;
+  }
 }

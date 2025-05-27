@@ -1,0 +1,171 @@
+<div class="flex flex-col w-full h-full">
+  <mat-card class="custom-card">
+    <mat-card-content>
+      <form
+        [formGroup]="searchForm"
+        class="grid grid-cols-4 gap-4 sm:grid-cols-1"
+      >
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Meeting Title</mat-label>
+          <input matInput formControlName="meetingTitle" class="" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Committee</mat-label>
+          <mat-select formControlName="committee"> </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Subcommittee</mat-label>
+          <mat-select formControlName="subcommittee"> </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>CAC</mat-label>
+          <mat-select formControlName="cac"> </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Meeting On or After</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerAfter"
+            formControlName="meetingOnOrAfter"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerAfter"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerAfter></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Meeting On or Before</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerBefore"
+            formControlName="meetingOnOrBefore"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="pickerBefore"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerBefore></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full col-span-2">
+          <mat-label>Members</mat-label>
+          <mat-select formControlName="members" multiple>
+            @for (member of members(); track $index) {
+            <mat-option [value]="member">
+              {{ member }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="flex w-full justify-end gap-2 mb-4">
+        <button mat-stroked-button type="button" (click)="resetForm()">
+          <mat-icon>refresh</mat-icon>
+          Reset
+        </button>
+        <button mat-raised-button color="primary" type="submit">
+          <mat-icon>search</mat-icon>
+          Search
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="flex w-full justify-end gap-2 mb-4">
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon>add</mat-icon>
+      Create Meeting
+    </button>
+  </div>
+
+  <mat-card class="">
+    <!-- <mat-card-header>
+      <mat-card-title style="font-weight: 500"
+        >Upcoming Meetings (Next 7 Days)</mat-card-title
+      >
+    </mat-card-header> -->
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-3">
+        <!-- Meeting Title Column -->
+        <ng-container matColumnDef="meetingTitle">
+          <th mat-header-cell *matHeaderCellDef>Meeting Title</th>
+          <td mat-cell *matCellDef="let element">{{ element.meetingTitle }}</td>
+        </ng-container>
+
+        <!-- Committee Column -->
+        <ng-container matColumnDef="committee">
+          <th mat-header-cell *matHeaderCellDef>Meeting Type</th>
+          <td mat-cell *matCellDef="let element">{{ element.committee }}</td>
+        </ng-container>
+
+        <!-- Subcommittee Column -->
+        <ng-container matColumnDef="subcommittee">
+          <th mat-header-cell *matHeaderCellDef>Subcommittee</th>
+          <td mat-cell *matCellDef="let element">{{ element.subcommittee }}</td>
+        </ng-container>
+
+        <!-- CAC Column -->
+        <ng-container matColumnDef="cac">
+          <th mat-header-cell *matHeaderCellDef>CAC</th>
+          <td mat-cell *matCellDef="let element">{{ element.cac }}</td>
+        </ng-container>
+
+        <!-- Meeting On or After Column -->
+        <ng-container matColumnDef="meetingOnOrAfter">
+          <th mat-header-cell *matHeaderCellDef>Session Time</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.meetingOnOrAfter }}
+          </td>
+        </ng-container>
+
+        <!-- Meeting On or Before Column -->
+        <ng-container matColumnDef="meetingOnOrBefore">
+          <th mat-header-cell *matHeaderCellDef>Meeting On or Before</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.meetingOnOrBefore }}
+          </td>
+        </ng-container>
+
+        <!-- Members Column -->
+        <ng-container matColumnDef="members">
+          <th mat-header-cell *matHeaderCellDef>Attending Members</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.members.join(", ") }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Actions">
+          <th mat-header-cell *matHeaderCellDef aria-hidden="true" class="w-[3em] text-center" style="text-align: center;">Actions</th>
+          <td mat-cell class="w-[3em]" *matCellDef="let survey; let i = index">
+            <div class="flex justify-start items-center mr-[-15%]">
+              <button (click)="openDialog(survey, 'View')" type="button" mat-icon-button aria-label="View file">
+                <mat-icon class="options-icon">
+                  visibility
+                </mat-icon>
+              </button>
+              <button (click)="openDialog(survey, 'Update')" type="button" mat-icon-button aria-label="View file">
+                <mat-icon class="options-icon">
+                  edit
+                </mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        #upcomingMeetingsPaginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </mat-card-content>
+  </mat-card>
+</div>

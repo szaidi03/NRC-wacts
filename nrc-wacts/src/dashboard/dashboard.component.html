@@ -71,6 +71,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+      <mat-paginator #upcomingMeetingsPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </mat-card-content>
   </mat-card>
 
@@ -101,6 +102,7 @@
         <tr mat-header-row *matHeaderRowDef="recentFeedbackColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: recentFeedbackColumns;"></tr>
       </table>
+      <mat-paginator #recentFeedbackPaginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </mat-card-content>
   </mat-card>
 </div>

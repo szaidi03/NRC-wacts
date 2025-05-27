@@ -1,0 +1,112 @@
+<h2 mat-dialog-title>{{ data.mode }} Meeting</h2>
+<mat-dialog-content>
+  <div class="p-4 pb-0">
+    <form class="grid grid-cols-3 gap-4 sm:grid-cols-1">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Meeting Title</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.meetingTitle"
+          name="meetingTitle"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Lead Member</mat-label>
+        <input
+          matInput
+          value="Alice Johnson"
+          name="leadMember"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Lead Engineer</mat-label>
+        <input
+          matInput
+          value="Alice Evans"
+          name="leadEngineer"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Members</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.members"
+          name="members"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>CAC</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.cac"
+          name="cac"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Meeting Type</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.subcommittee"
+          name="meetingType"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Committee</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.committee"
+          name="committee"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Subcommittee</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.subcommittee"
+          name="subcommittee"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Session</mat-label>
+        <input
+          matInput
+          [(ngModel)]="data.meetingOnOrAfter"
+          name="meetingOnOrAfter"
+          [readonly]="data.mode === 'View'"
+        />
+      </mat-form-field>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  @if(data.mode === 'Update'){<button
+    mat-stroked-button
+    [mat-dialog-close]="true"
+    color="warn"
+  >
+    <mat-icon>cancel</mat-icon>
+    Cancel
+  </button>
+  <button mat-raised-button cdkFocusInitial>
+    <mat-icon>save</mat-icon>
+    Save</button
+  >}@else {
+  <button mat-raised-button [mat-dialog-close]="true" color="warn">
+    <mat-icon> arrow_back </mat-icon>
+    Back
+  </button>
+  }
+</mat-dialog-actions>
