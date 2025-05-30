@@ -33,7 +33,7 @@ export const routes: Routes = [
   },
   {
     path: 'administration',
-    loadComponent: () => import('../demo/demo.component').then(m => m.DemoComponent),
+    loadComponent: () => import('../administration/administration.component').then(m => m.AdministrationComponent),
     data: { name: 'Administration' },
   },
 ];

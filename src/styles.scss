@@ -26,10 +26,18 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: rgb(226, 232, 240);
   @include mat.form-field-density(-4);
-
 }
 
 :root {
+  .dense-toggle {
+    .mat-label {
+      height: 18px !important;
+    }
+
+    .mdc-switch {
+      scale: 0.8 !important;
+    }
+  }
 
   .mat-mdc-text-field-wrapper {
     background-color: rgba(234, 235, 236, 0.336) !important;
