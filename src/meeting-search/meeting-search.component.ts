@@ -59,6 +59,26 @@ export class MeetingSearchComponent implements AfterViewInit {
       date: '5/7/2025',
       summary: 'Time zone shows incorrectly in meeting viewer.',
     },
+    {
+      type: 'General Feedback',
+      date: '5/15/2025',
+      summary: 'Improve navigation in the dashboard.',
+    },
+    {
+      type: 'Feature Request',
+      date: '5/20/2025',
+      summary: 'Add dark mode support.',
+    },
+    {
+      type: 'Bug Report',
+      date: '5/25/2025',
+      summary: 'Search function returns no results for valid queries.',
+    },
+    {
+      type: 'General Feedback',
+      date: '6/1/2025',
+      summary: 'Add more customization options for user profiles.',
+    },
   ]);
 
   displayedColumns: string[] = [
@@ -93,6 +113,42 @@ export class MeetingSearchComponent implements AfterViewInit {
       meetingOnOrAfter: '6/5/2025 - 2:00 PM',
       meetingOnOrBefore: '6/15/2025',
       members: ['John Doe', 'Jane Smith'],
+    },
+    {
+      meetingTitle: 'Emergency Preparedness Drill',
+      committee: 'Committee C',
+      subcommittee: 'Subcommittee Z',
+      cac: '1100000009',
+      meetingOnOrAfter: '6/10/2025 - 1:00 PM',
+      meetingOnOrBefore: '6/20/2025',
+      members: ['Grace Davis', 'Frank Foster'],
+    },
+    {
+      meetingTitle: 'Nuclear Safety Protocol Review',
+      committee: 'Committee A',
+      subcommittee: 'Subcommittee X',
+      cac: '1100000011',
+      meetingOnOrAfter: '6/15/2025 - 10:00 AM',
+      meetingOnOrBefore: '6/25/2025',
+      members: ['John Doe', 'Jane Smith', 'Grace Davis'],
+    },
+    {
+      meetingTitle: 'Regulatory Compliance Review',
+      committee: 'Committee B',
+      subcommittee: 'Subcommittee Y',
+      cac: '1100000013',
+      meetingOnOrAfter: '6/20/2025 - 9:00 AM',
+      meetingOnOrBefore: '6/30/2025',
+      members: ['Frank Foster', 'John Doe'],
+    },
+    {
+      meetingTitle: 'Annual Safety Report Review',
+      committee: 'Committee C',
+      subcommittee: 'Subcommittee Z',
+      cac: '1100000015',
+      meetingOnOrAfter: '6/25/2025 - 11:00 AM',
+      meetingOnOrBefore: '7/5/2025',
+      members: ['Jane Smith', 'Grace Davis'],
     },
   ]);
 

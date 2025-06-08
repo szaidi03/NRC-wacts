@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +20,7 @@ import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
     MatRippleModule,
     MatTableModule,
     MatPaginatorModule,
+    MatTabsModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
@@ -41,6 +43,26 @@ export class DashboardComponent implements AfterViewInit {
       type: 'Bug Report',
       date: '5/7/2025',
       summary: 'Time zone shows incorrectly in meeting viewer.',
+    },
+    {
+      type: 'General Feedback',
+      date: '5/15/2025',
+      summary: 'Improve navigation in the dashboard.',
+    },
+    {
+      type: 'Feature Request',
+      date: '5/20/2025',
+      summary: 'Add dark mode support.',
+    },
+    {
+      type: 'Bug Report',
+      date: '5/25/2025',
+      summary: 'Search function returns no results for valid queries.',
+    },
+    {
+      type: 'General Feedback',
+      date: '5/30/2025',
+      summary: 'Consider adding a help section for new users.',
     },
   ]);
 
@@ -66,6 +88,34 @@ export class DashboardComponent implements AfterViewInit {
       role: 'Attendee',
       sessionTime: '6/5/2025 9:00 AM',
       location: 'Room 203',
+    },
+    {
+      meetingTitle: 'Emergency Preparedness Drill',
+      meetingType: 'Subcommittee',
+      role: 'Lead Member',
+      sessionTime: '6/10/2025 10:00 AM',
+      location: 'Virtual',
+    },
+    {
+      meetingTitle: 'Regulatory Compliance Review',
+      meetingType: 'Committee',
+      role: 'Attendee',
+      sessionTime: '6/15/2025 11:00 AM',
+      location: 'Room 101',
+    },
+    {
+      meetingTitle: 'Nuclear Safety Standards Discussion',
+      meetingType: 'Subcommittee',
+      role: 'Lead Member',
+      sessionTime: '6/20/2025 1:00 PM',
+      location: 'Virtual',
+    },
+    {
+      meetingTitle: 'Annual Safety Report Review',
+      meetingType: 'Committee',
+      role: 'Attendee',
+      sessionTime: '6/25/2025 2:00 PM',
+      location: 'Room 305',
     },
   ]);
 
