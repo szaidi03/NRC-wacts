@@ -33,69 +33,69 @@ body {
 
   // TAB *****************************************************************************************
 
-  .mat-mdc-tab-ripple.mat-mdc-tab-ripple {
-    border-radius: 0.75em !important;
-  }
+  // .mat-mdc-tab-ripple.mat-mdc-tab-ripple {
+  //   border-radius: 0.75em !important;
+  // }
 
-  .mat-mdc-tab-link-container, .mat-mdc-tab-label-container {
-    border: none !important;
-  }
+  // .mat-mdc-tab-link-container, .mat-mdc-tab-label-container {
+  //   border: none !important;
+  // }
 
-  .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label,
-  .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active
-    .mdc-tab__text-label {
-    color: #ffffff;
-    box-shadow: 0 !important;
-  }
+  // .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active .mdc-tab__text-label,
+  // .mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active
+  //   .mdc-tab__text-label {
+  //   color: #ffffff;
+  //   box-shadow: 0 !important;
+  // }
 
-  .mat-mdc-tab.mdc-tab--active, .mat-mdc-tab-link.mdc-tab--active {
-    .mdc-tab__text-label {
-      color: #ffffff !important;
-    }
-    box-shadow: none !important;
-  }
+  // .mat-mdc-tab.mdc-tab--active, .mat-mdc-tab-link.mdc-tab--active {
+  //   .mdc-tab__text-label {
+  //     color: #ffffff !important;
+  //   }
+  //   box-shadow: none !important;
+  // }
 
-  .mat-mdc-tab-labels, .mat-mdc-tab-links {
-    display: flex;
-    flex: 1 0 auto;
-    gap: 0.5em;
-    box-shadow: 0 !important;
-  }
+  // .mat-mdc-tab-labels, .mat-mdc-tab-links {
+  //   display: flex;
+  //   flex: 1 0 auto;
+  //   gap: 0.5em;
+  //   box-shadow: 0 !important;
+  // }
 
-  .mat-mdc-tab:not(.mat-mdc-tab-disabled)
-    .mdc-tab-indicator__content--underline,
-  .mat-mdc-tab-link:not(.mat-mdc-tab-disabled)
-    .mdc-tab-indicator__content--underline {
-    border: transparent;
-  }
+  // .mat-mdc-tab:not(.mat-mdc-tab-disabled)
+  //   .mdc-tab-indicator__content--underline,
+  // .mat-mdc-tab-link:not(.mat-mdc-tab-disabled)
+  //   .mdc-tab-indicator__content--underline {
+  //   border: transparent;
+  // }
 
-  .mat-mdc-tab.mdc-tab--active,
-  .mat-mdc-tab-link.mdc-tab--active {
-    background-color: $primary !important;
-    border-radius: 0.75em !important;
-    @apply shadow-2xl;
-  }
+  // .mat-mdc-tab.mdc-tab--active,
+  // .mat-mdc-tab-link.mdc-tab--active {
+  //   background-color: $primary !important;
+  //   border-radius: 0.75em !important;
+  //   @apply shadow-2xl;
+  // }
 
-  .mat-mdc-tab,
-  .mat-mdc-tab-link {
-    background-color: transparent;
-    border-radius: 0.75em;
-  }
+  // .mat-mdc-tab,
+  // .mat-mdc-tab-link {
+  //   background-color: transparent;
+  //   border-radius: 0.75em;
+  // }
 
-  .mat-mdc-tab .mdc-tab__text-label,
-  .mat-mdc-tab-link .mdc-tab__text-label {
-    color: $primary;
-  }
+  // .mat-mdc-tab .mdc-tab__text-label,
+  // .mat-mdc-tab-link .mdc-tab__text-label {
+  //   color: $primary;
+  // }
 
-  .mat-mdc-button-disabled {
-    pointer-events: none !important;
-  }
+  // .mat-mdc-button-disabled {
+  //   pointer-events: none !important;
+  // }
 
-  .mat-mdc-tab.mdc-tab, .mat-mdc-tab-link  {
-    height: 48px;
-    flex-grow: 0;
-    border: 1px solid $primary;
-  }
+  // .mat-mdc-tab.mdc-tab, .mat-mdc-tab-link  {
+  //   height: 48px;
+  //   flex-grow: 0;
+  //   border: 1px solid $primary;
+  // }
   // END TAB *****************************************************************************************
 
   .dense-toggle {
@@ -126,7 +126,7 @@ body {
     grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
   }
   .dense-input {
-    @include mat.form-field-density(-4);
+    @include mat.form-field-density(-2);
   }
   .compact-input {
     @include mat.form-field-density(-2);

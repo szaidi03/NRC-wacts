@@ -1,0 +1,38 @@
+<div class="flex flex-col w-full h-full">
+  <mat-card class="custom-card">
+    <mat-card-content>
+      <form [formGroup]="reportForm" class="grid grid-cols-4 gap-x-4 sm:grid-cols-1">
+        <mat-form-field appearance="outline" class="w-full col-span-4">
+          <mat-label>Subject</mat-label>
+          <input matInput formControlName="subject" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full col-span-4 h-40">
+          <mat-label>Message</mat-label>
+          <textarea matInput formControlName="message"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full col-span-2">
+          <mat-label>Contact Information</mat-label>
+          <input matInput formControlName="contactInfo" placeholder="ex. Email or Phone" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full col-span-2">
+          <mat-label>Feedback Type</mat-label>
+          <input matInput formControlName="feedbackType" placeholder="ex. Email or Phone" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="flex w-full justify-end gap-2 mb-4">
+    <button style="background: white" mat-stroked-button type="button">
+      <mat-icon>refresh</mat-icon>
+      Reset
+    </button>
+    <button (click)="downloadReport()" mat-raised-button color="primary" type="submit">
+      <mat-icon>download</mat-icon>
+      Download
+    </button>
+  </div>
+</div>

@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ExpandMeetingDialogTsComponent } from './expand-meeting.dialog.ts/expand-meeting.dialog.ts.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-meeting-search',
@@ -158,7 +159,7 @@ export class MeetingSearchComponent implements AfterViewInit {
   subcommittees = ['Subcommittee X', 'Subcommittee Y', 'Subcommittee Z'];
   cacs = ['CAC 1', 'CAC 2', 'CAC 3'];
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private dialog: MatDialog, private route: ActivatedRoute) {
     this.searchForm = this.fb.group({
       meetingTitle: [''],
       committee: [''],
@@ -167,6 +168,12 @@ export class MeetingSearchComponent implements AfterViewInit {
       meetingOnOrAfter: [''],
       meetingOnOrBefore: [''],
       members: [[]],
+    });
+
+    this.route.params.subscribe(params => {
+      if (params['id']) {
+        this.openDialog(this.dataSource.data[0], 'View');
+      }
     });
   }
 

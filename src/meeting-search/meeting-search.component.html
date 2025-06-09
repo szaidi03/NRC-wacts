@@ -77,13 +77,6 @@
     </mat-card-content>
   </mat-card>
 
-  <div class="flex w-full justify-end gap-2 mb-4">
-    <button mat-raised-button color="primary" type="submit">
-      <mat-icon>add</mat-icon>
-      Create Meeting
-    </button>
-  </div>
-
   <mat-card class="">
     <!-- <mat-card-header>
       <mat-card-title style="font-weight: 500"
@@ -141,18 +134,32 @@
         </ng-container>
 
         <ng-container matColumnDef="Actions">
-          <th mat-header-cell *matHeaderCellDef aria-hidden="true" class="w-[3em] text-center" style="text-align: center;">Actions</th>
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            aria-hidden="true"
+            class="w-[3em] text-center"
+            style="text-align: center"
+          >
+            Actions
+          </th>
           <td mat-cell class="w-[3em]" *matCellDef="let survey; let i = index">
             <div class="flex justify-start items-center mr-[-15%]">
-              <button (click)="openDialog(survey, 'View')" type="button" mat-icon-button aria-label="View file">
-                <mat-icon class="options-icon">
-                  visibility
-                </mat-icon>
+              <button
+                (click)="openDialog(survey, 'View')"
+                type="button"
+                mat-icon-button
+                aria-label="View file"
+              >
+                <mat-icon class="options-icon"> visibility </mat-icon>
               </button>
-              <button (click)="openDialog(survey, 'Update')" type="button" mat-icon-button aria-label="View file">
-                <mat-icon class="options-icon">
-                  edit
-                </mat-icon>
+              <button
+                (click)="openDialog(survey, 'Update')"
+                type="button"
+                mat-icon-button
+                aria-label="View file"
+              >
+                <mat-icon class="options-icon"> edit </mat-icon>
               </button>
             </div>
           </td>
@@ -168,4 +175,11 @@
       ></mat-paginator>
     </mat-card-content>
   </mat-card>
+
+  <div class="flex w-full justify-end gap-2 mb-4">
+    <button mat-raised-button color="primary" type="submit">
+      <mat-icon>add</mat-icon>
+      Create Meeting
+    </button>
+  </div>
 </div>

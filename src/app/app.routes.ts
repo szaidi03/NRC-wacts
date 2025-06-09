@@ -16,10 +16,15 @@ export const routes: Routes = [
     loadComponent: () => import('../meeting-search/meeting-search.component').then(m => m.MeetingSearchComponent),
     data: { name: 'Meeting Search' },
   },
+   {
+    path: 'meeting-search',
+    loadComponent: () => import('../meeting-search/meeting-search.component').then(m => m.MeetingSearchComponent),
+    data: { name: 'Meeting Search' },
+  },
   {
-    path: 'reports',
-    loadComponent: () => import('../demo/demo.component').then(m => m.DemoComponent),
-    data: { name: 'Reports' },
+    path: 'meeting-search/:id',
+    loadComponent: () => import('../meeting-search/meeting-search.component').then(m => m.MeetingSearchComponent),
+    data: { name: 'Meeting Search' },
   },
   {
     path: 'documents',
@@ -30,6 +35,11 @@ export const routes: Routes = [
     path: 'help-feedback',
     loadComponent: () => import('../help-feedback/help-feedback.component').then(m => m.HelpFeedbackComponent),
     data: { name: 'Help & Feedback' },
+  },
+  {
+    path: 'reports',
+    loadComponent: () => import('../reports/reports.component').then(m => m.ReportsComponent),
+    data: { name: 'Reports' },
   },
   {
     path: 'administration',
