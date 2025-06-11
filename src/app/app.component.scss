@@ -69,20 +69,53 @@ mat-toolbar.secondary-toolbar {
 
 mat-drawer-container.drawer-container {
   background-color: rgb(226, 232, 240); /* Universal background color */
+
+  mat-icon {
+    min-width: fit-content !important;
+  }
+}
+
+.mat-drawer-transition .mat-drawer-content{
+  transition: margin 200ms cubic-bezier(0.25, 0.8, 0.25, 1); /* Synced duration */
 }
 
 mat-drawer.custom-drawer {
-  background-color: rgb(226, 232, 240); /* Universal background color */
+  overflow-x: none !important;
+  background-color: rgb(226, 232, 240);
   padding: 0px;
-  width: 331px !important;
+  transition-duration: 200ms; /* Increased duration for smoother animation */
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-property: width, margin; /* Added margin to transition properties */
 
   .mat-mdc-card {
     margin: 20px 10px 20px 20px !important;
-    width: 300px !important;
+    transition: width 200ms cubic-bezier(0.25, 0.8, 0.25, 1); /* Synced duration */
+    overflow-x: none !important;
   }
 
   .mat-mdc-card-content {
     padding: 0px !important;
+
+  }
+
+  &.drawer-opened {
+    width: 331px !important;
+
+    .mat-mdc-card {
+      width: 300px !important;
+    }
+  }
+
+  &.drawer-closed {
+    width: 91px !important;
+
+    .mat-mdc-card {
+      width: 60px !important;
+    }
+
+    .nav-item span {
+      display: none !important;
+    }
   }
 }
 
@@ -93,6 +126,7 @@ mat-drawer.custom-drawer {
   cursor: pointer;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 6px;
+  border-left: 3px solid transparent;
 }
 
 .nav-item:last-child {
@@ -107,6 +141,7 @@ mat-drawer.custom-drawer {
 .nav-item span {
   font-size: 16px;
   color: #1d326d;
+  text-wrap: nowrap;
 }
 
 .nav-item.active {
@@ -114,7 +149,7 @@ mat-drawer.custom-drawer {
   font-weight: 500;
   color: black !important;
 
-  span{
+  span {
     color: black !important;
   }
 }

@@ -19,7 +19,7 @@
 
 <mat-toolbar class="secondary-toolbar">
   <div class="left-section">
-    <button mat-icon-button class="hamburger-icon" (click)="drawer.toggle()">
+    <button mat-icon-button class="hamburger-icon" (click)="drawerToggled.set(!drawerToggled())">
       <mat-icon>menu</mat-icon>
     </button>
     <span style="font-size: 18px; font-weight: 500">{{ routeName() }}</span>
@@ -32,7 +32,9 @@
 </mat-toolbar>
 
 <mat-drawer-container class="drawer-container" autosize>
-  <mat-drawer #drawer mode="side" class="custom-drawer" opened>
+  <mat-drawer #drawer mode="side" class="custom-drawer"
+  [ngClass]="{ 'drawer-opened': drawerToggled(), 'drawer-closed': !drawerToggled() }"
+   opened>
     <mat-card style="width: 100%">
       <mat-card-content>
         <div
