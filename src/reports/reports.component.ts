@@ -16,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-
+import { MatMenuModule } from '@angular/material/menu';
 (<any>pdfMake).addVirtualFileSystem(pdfFonts);
 
 @Component({
@@ -37,6 +37,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatMenuModule,
   ],
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss'],
@@ -53,16 +54,16 @@ export class ReportsComponent {
     });
   }
 
-  downloadReport() {
+  downloadXlsxReport() {
     const formData = this.reportForm.value;
-
-    // Generate Excel file
     const worksheet = XLSX.utils.json_to_sheet([formData]);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Report');
     XLSX.writeFile(workbook, 'report.xlsx');
+  }
 
-    // Generate PDF file
+  downloadPdfReport() {
+    const formData = this.reportForm.value;
     const pdfDefinition = {
       content: [
         { text: 'Report', style: 'header' },

@@ -30,9 +30,19 @@
       <mat-icon>refresh</mat-icon>
       Reset
     </button>
-    <button (click)="downloadReport()" mat-raised-button color="primary" type="submit">
+    <button [matMenuTriggerFor]="downloadMenu" mat-raised-button color="primary" type="button">
       <mat-icon>download</mat-icon>
       Download
     </button>
+    <mat-menu #downloadMenu="matMenu">
+      <button mat-menu-item (click)="downloadXlsxReport()">
+        <mat-icon>table_view</mat-icon>
+        <span>Download XLSX</span>
+      </button>
+      <button mat-menu-item (click)="downloadPdfReport()">
+        <mat-icon>picture_as_pdf</mat-icon>
+        <span>Download PDF</span>
+      </button>
+    </mat-menu>
   </div>
 </div>

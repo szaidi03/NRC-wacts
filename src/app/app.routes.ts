@@ -28,7 +28,7 @@ export const routes: Routes = [
   },
   {
     path: 'documents',
-    loadComponent: () => import('../demo/demo.component').then(m => m.DemoComponent),
+    loadComponent: () => import('../calendar-view/calendar-view.component').then(m => m.CalendarViewComponent),
     data: { name: 'Documents' },
   },
   {
