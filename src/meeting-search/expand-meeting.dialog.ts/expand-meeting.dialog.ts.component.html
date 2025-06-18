@@ -16,7 +16,7 @@
         <mat-label>Lead Member</mat-label>
         <input
           matInput
-          value="Alice Johnson"
+          [value]="data.mode === 'Add' ? '' : 'Alice Johnson'"
           name="leadMember"
           [readonly]="data.mode === 'View'"
         />
@@ -26,7 +26,7 @@
         <mat-label>Lead Engineer</mat-label>
         <input
           matInput
-          value="Alice Evans"
+          [value]="data.mode === 'Add' ? '' : 'Alice Evans'"
           name="leadEngineer"
           [readonly]="data.mode === 'View'"
         />
@@ -83,16 +83,68 @@
         <mat-label>Session</mat-label>
         <input
           matInput
+          [matDatepicker]="picker"
           [(ngModel)]="data.meetingOnOrAfter"
           name="meetingOnOrAfter"
           [readonly]="data.mode === 'View'"
         />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </form>
   </div>
+
+  <div class="w-full mt-5 kist">
+    <div
+      class="flex flex-col w-[100%] gap-2 items-center gap-10 justify-center"
+    >
+      @if(data.mode !== 'View'){
+      <div
+        class="file-input-dropzone"
+        appFileDragdrop
+        style="width: 60% !important; min-height: 70px !important"
+        (fileChanged)="fileDropped($event)"
+      >
+        <span class="">Drag Files Here or </span>
+        <button class="file-link" (click)="fileInput.click()">
+          <mat-icon>attach_file</mat-icon>
+          Select Files to Upload
+        </button>
+        <input
+          #fileInput
+          hidden
+          type="file"
+          name="file"
+          accept=".pdf"
+          multiple
+          (change)="onFileSelected($event)"
+        />
+      </div>
+      }
+      <div class="w-full flex flex-col justify-center items-center">
+        @for (file of files(); track $index) {
+        <mat-card appearance="outlined" class="mat-elevation-z8 ">
+          <mat-card-content>
+            <div class="w-full flex justify-between items-center">
+              <span class="ml-3">
+                {{ file.name }}
+              </span>
+              @if(data.mode !== 'View'){<button
+                (click)="remove(file)"
+                mat-icon-button
+              >
+                <mat-icon> delete </mat-icon></button
+              >}
+            </div>
+          </mat-card-content>
+        </mat-card>
+        }
+      </div>
+    </div>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  @if(data.mode === 'Update'){<button
+  @if(data.mode === 'Update' || data.mode === 'Add'){<button
     mat-stroked-button
     [mat-dialog-close]="true"
     color="warn"

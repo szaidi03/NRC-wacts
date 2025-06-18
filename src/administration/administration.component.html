@@ -1,7 +1,7 @@
 <div class="flex flex-col w-full h-full">
   <mat-card class="custom-card">
     <mat-card-content>
-      <nav mat-tab-nav-bar [tabPanel]="tabPanel" [mat-stretch-tabs]="false">
+      <!-- <nav mat-tab-nav-bar [tabPanel]="tabPanel" [mat-stretch-tabs]="false">
         @for (link of links; track link) {
         <a
           mat-tab-link
@@ -13,10 +13,10 @@
         }
       </nav>
 
-      <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+      <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel> -->
 
       @if(activeLink() === 'Account Management'){
-      <form class="grid grid-cols-4 gap-4 sm:grid-cols-1 mt-8">
+      <form class="grid grid-cols-4 gap-x-4 sm:grid-cols-1 mt-3">
         <mat-form-field appearance="outline" class="w-full">
           <mat-label>First Name</mat-label>
           <input matInput formControlName="meetingTitle" class="" />
@@ -82,7 +82,7 @@
         </button>
       </div>
       }@else {
-      <form class="grid grid-cols-4 gap-4 sm:grid-cols-1 mt-8">
+      <form class="grid grid-cols-4 gap-x-4 sm:grid-cols-1 mt-3">
         <mat-form-field appearance="outline" class="w-full col-span-2">
           <mat-label>Select Role</mat-label>
           <mat-select multiple> </mat-select>
@@ -102,55 +102,59 @@
       >
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
         </ng-container>
 
         <!-- Email Column -->
         <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> Email </th>
-          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
         </ng-container>
 
         <!-- Roles Column -->
         <ng-container matColumnDef="roles">
-          <th mat-header-cell *matHeaderCellDef> Roles </th>
-          <td mat-cell *matCellDef="let element"> {{element.roles}} </td>
+          <th mat-header-cell *matHeaderCellDef>Roles</th>
+          <td mat-cell *matCellDef="let element">{{ element.roles }}</td>
         </ng-container>
 
         <!-- Last Login Column -->
         <ng-container matColumnDef="lastLogin">
-          <th mat-header-cell *matHeaderCellDef> Last Login </th>
-          <td mat-cell *matCellDef="let element"> {{element.lastLogin}} </td>
+          <th mat-header-cell *matHeaderCellDef>Last Login</th>
+          <td mat-cell *matCellDef="let element">{{ element.lastLogin }}</td>
         </ng-container>
 
         <!-- Status Column -->
         <ng-container matColumnDef="status">
-          <th mat-header-cell *matHeaderCellDef> Status </th>
-          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
         </ng-container>
 
         <!-- Actions Column -->
         <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef aria-hidden="true" class="w-[3em] text-center" style="text-align: center;">Actions</th>
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            aria-hidden="true"
+            class="w-[3em] text-center"
+            style="text-align: center"
+          >
+            Actions
+          </th>
           <td mat-cell class="w-[3em]" *matCellDef="let survey; let i = index">
             <div class="flex justify-start items-center mr-[-15%]">
-              <button  type="button" mat-icon-button aria-label="View file">
-                <mat-icon class="options-icon">
-                  visibility
-                </mat-icon>
+              <button (click)="openViewProfileDialog(survey)" type="button" mat-icon-button aria-label="View file">
+                <mat-icon class="options-icon"> visibility </mat-icon>
               </button>
-              <button  type="button" mat-icon-button aria-label="View file">
-                <mat-icon class="options-icon">
-                  edit
-                </mat-icon>
+              <button (click)="openEditProfileDialog(survey)" type="button" mat-icon-button aria-label="View file">
+                <mat-icon class="options-icon"> edit </mat-icon>
               </button>
             </div>
           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="accountDisplayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: accountDisplayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: accountDisplayedColumns"></tr>
       </table>
       <mat-paginator
         #accountManagementPaginator
@@ -166,32 +170,32 @@
       >
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
         </ng-container>
 
         <!-- Internal Name Column -->
         <ng-container matColumnDef="internalName">
-          <th mat-header-cell *matHeaderCellDef> Internal Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.internalName}} </td>
+          <th mat-header-cell *matHeaderCellDef>Internal Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.internalName }}</td>
         </ng-container>
 
         <!-- Description Column -->
         <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef> Description </th>
-          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let element">{{ element.description }}</td>
         </ng-container>
 
         <!-- Enabled Column -->
         <ng-container matColumnDef="enabled">
-          <th mat-header-cell *matHeaderCellDef> Enabled </th>
+          <th mat-header-cell *matHeaderCellDef>Enabled</th>
           <td mat-cell class="w-[5em]" *matCellDef="let element">
             <mat-slide-toggle class="dense-toggle"></mat-slide-toggle>
           </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
       <mat-paginator
         #rolesAndRightsManagementPaginator
@@ -207,6 +211,13 @@
     <button mat-raised-button color="primary" type="submit">
       <mat-icon>save</mat-icon>
       Save Changes
+    </button>
+  </div>
+  }@else {
+  <div class="flex w-full justify-end gap-2 mb-4">
+    <button (click)="openAddProfileDialog()" mat-raised-button color="primary">
+      <mat-icon>add</mat-icon>
+      Add Profile
     </button>
   </div>
   }

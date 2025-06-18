@@ -35,6 +35,11 @@ import {
 import { Subject } from 'rxjs';
 import { NgSwitch } from '@angular/common';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import * as XLSX from 'xlsx';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { MatMenuModule } from '@angular/material/menu';
+(<any>pdfMake).addVirtualFileSystem(pdfFonts);
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -65,6 +70,7 @@ const colors: Record<string, EventColor> = {
     CalendarDayModule,
     CalendarCommonModule,
     MatButtonToggleModule,
+    MatMenuModule,
   ],
   templateUrl: './calendar-view.component.html',
   styleUrls: ['./calendar-view.component.css'],
@@ -139,6 +145,32 @@ export class CalendarViewComponent {
       },
       draggable: true,
     },
+    {
+      start: subDays(startOfDay(new Date()), 3),
+      end: addDays(startOfDay(new Date()), 3),
+      title: 'A draggable event',
+      actions: this.actions,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
+    {
+      start: startOfDay(new Date()),
+      title: 'Another event',
+      actions: this.actions,
+    },
+    {
+      start: addDays(startOfDay(new Date()), 1),
+      title: 'A draggable event',
+      actions: this.actions,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
+    },
   ];
 
   activeDayIsOpen: boolean = true;
@@ -193,5 +225,43 @@ export class CalendarViewComponent {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+  }
+
+  downloadXlsxReport() {
+    const worksheet = XLSX.utils.json_to_sheet(
+      this.events.map((event) => ({
+        Title: event.title,
+        Start: event.start,
+        End: event.end,
+        AllDay: event.allDay,
+      }))
+    );
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Events');
+    XLSX.writeFile(workbook, 'events.xlsx');
+  }
+
+  downloadPdfReport() {
+    const dd = {
+      pageOrientation: 'landscape', // Set the orientation to landscape
+      content: [
+        {
+          table: {
+            headerRows: 1,
+            widths: ['*', '*', '*', '*'],
+            body: [
+              ['Title', 'Start', 'End', 'AllDay'],
+              ...this.events.map((event) => [
+                event.title,
+                event.start.toString(),
+                event.end?.toString() || '',
+                event.allDay ? 'Yes' : 'No',
+              ]),
+            ],
+          },
+        },
+      ],
+    };
+    pdfMake.createPdf(dd as unknown as any).download('events.pdf');
   }
 }

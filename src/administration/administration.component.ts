@@ -5,6 +5,8 @@ import {
   model,
   QueryList,
   ViewChildren,
+  input,
+  inject,
 } from '@angular/core';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,6 +21,9 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfileDialogComponent } from './profile-dialog/profile-dialog.component';
 
 @Component({
   selector: 'app-administration',
@@ -44,6 +49,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 export class AdministrationComponent implements AfterViewInit {
   @ViewChildren(MatPaginator)
   paginator!: QueryList<MatPaginator>;
+
+  private activatedRoute = inject(ActivatedRoute);
 
   links = ['Account Management', 'Roles & Rights Management'];
   activeLink = model(this.links[0]);
@@ -165,7 +172,15 @@ export class AdministrationComponent implements AfterViewInit {
     this.rolesAndRightsManagement
   );
 
-  constructor() {}
+  constructor(private dialog: MatDialog) {
+    // Check route data to determine the starting active link
+    const routeData = this.activatedRoute.snapshot.data;
+    if (routeData['name'] === 'Profile Management') {
+      this.activeLink.set(this.links[0]); // Account Management
+    } else {
+      this.activeLink.set(this.links[1]); // Roles & Rights Management
+    }
+  }
 
   ngAfterViewInit() {
     // Assign the paginator dynamically based on the active link
@@ -183,5 +198,42 @@ export class AdministrationComponent implements AfterViewInit {
     } else if (activeLink === 'Roles & Rights Management') {
       this.rolesAndRightsManagementDataSource.paginator = this.paginator.first;
     }
+  }
+
+  addNewAccount() {
+    
+  }
+
+  openAddProfileDialog() {
+    const dialogRef = this.dialog.open(ProfileDialogComponent, {
+      minWidth: '35vw',
+      data: { mode: 'add' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Handle the result of adding a new profile
+      }
+    });
+  }
+
+  openEditProfileDialog(profileData: any) {
+    const dialogRef = this.dialog.open(ProfileDialogComponent, {
+      minWidth: '35vw',
+      data: { mode: 'edit', profileData },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Handle the result of editing the profile
+      }
+    });
+  }
+
+  openViewProfileDialog(profileData: any) {
+    this.dialog.open(ProfileDialogComponent, {
+      minWidth: '35vw',
+      data: { mode: 'view', profileData },
+    });
   }
 }

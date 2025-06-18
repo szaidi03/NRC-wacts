@@ -89,12 +89,11 @@ export class MeetingSearchComponent implements AfterViewInit {
     'cac',
     'meetingOnOrAfter',
     'members',
-    'Actions'
+    'Actions',
   ];
 
   //signal array of random names for members
   members = signal(['Grace Davis', 'Frank Foster', 'John Doe', 'Jane Smith']);
-
 
   dataSource = new MatTableDataSource([
     {
@@ -105,6 +104,10 @@ export class MeetingSearchComponent implements AfterViewInit {
       meetingOnOrAfter: '6/1/2025 - 3:00 PM',
       meetingOnOrBefore: '6/10/2025',
       members: ['Grace Davis', 'Frank Foster', 'John Doe', 'Jane Smith'],
+      files: [
+        { name: 'safety_review.pdf' },
+        { name: 'core_analysis.docx' },
+      ],
     },
     {
       meetingTitle: 'Spent Fuel Storage Update',
@@ -114,6 +117,10 @@ export class MeetingSearchComponent implements AfterViewInit {
       meetingOnOrAfter: '6/5/2025 - 2:00 PM',
       meetingOnOrBefore: '6/15/2025',
       members: ['John Doe', 'Jane Smith'],
+      files: [
+        { name: 'storage_update.pdf' },
+        { name: 'fuel_report.xlsx' },
+      ],
     },
     {
       meetingTitle: 'Emergency Preparedness Drill',
@@ -123,6 +130,10 @@ export class MeetingSearchComponent implements AfterViewInit {
       meetingOnOrAfter: '6/10/2025 - 1:00 PM',
       meetingOnOrBefore: '6/20/2025',
       members: ['Grace Davis', 'Frank Foster'],
+      files: [
+        { name: 'preparedness_plan.docx' },
+        { name: 'drill_schedule.pdf' },
+      ],
     },
     {
       meetingTitle: 'Nuclear Safety Protocol Review',
@@ -132,6 +143,10 @@ export class MeetingSearchComponent implements AfterViewInit {
       meetingOnOrAfter: '6/15/2025 - 10:00 AM',
       meetingOnOrBefore: '6/25/2025',
       members: ['John Doe', 'Jane Smith', 'Grace Davis'],
+      files: [
+        { name: 'protocol_review.pdf' },
+        { name: 'safety_guidelines.docx' },
+      ],
     },
     {
       meetingTitle: 'Regulatory Compliance Review',
@@ -141,6 +156,10 @@ export class MeetingSearchComponent implements AfterViewInit {
       meetingOnOrAfter: '6/20/2025 - 9:00 AM',
       meetingOnOrBefore: '6/30/2025',
       members: ['Frank Foster', 'John Doe'],
+      files: [
+        { name: 'compliance_report.pdf' },
+        { name: 'regulations.docx' },
+      ],
     },
     {
       meetingTitle: 'Annual Safety Report Review',
@@ -150,6 +169,10 @@ export class MeetingSearchComponent implements AfterViewInit {
       meetingOnOrAfter: '6/25/2025 - 11:00 AM',
       meetingOnOrBefore: '7/5/2025',
       members: ['Jane Smith', 'Grace Davis'],
+      files: [
+        { name: 'annual_report.pdf' },
+        { name: 'review_notes.docx' },
+      ],
     },
   ]);
 
@@ -159,7 +182,11 @@ export class MeetingSearchComponent implements AfterViewInit {
   subcommittees = ['Subcommittee X', 'Subcommittee Y', 'Subcommittee Z'];
   cacs = ['CAC 1', 'CAC 2', 'CAC 3'];
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog, private route: ActivatedRoute) {
+  constructor(
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private route: ActivatedRoute
+  ) {
     this.searchForm = this.fb.group({
       meetingTitle: [''],
       committee: [''],
@@ -170,7 +197,7 @@ export class MeetingSearchComponent implements AfterViewInit {
       members: [[]],
     });
 
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params) => {
       if (params['id']) {
         this.openDialog(this.dataSource.data[0], 'View');
       }
@@ -184,7 +211,25 @@ export class MeetingSearchComponent implements AfterViewInit {
   openDialog(rowData: any, mode: 'View' | 'Update'): void {
     this.dialog.open(ExpandMeetingDialogTsComponent, {
       minWidth: '60vw',
-      data: {...rowData, mode: mode},
+      data: { ...rowData, mode: mode },
+    });
+  }
+
+  openAddDialog(): void {
+    this.dialog.open(ExpandMeetingDialogTsComponent, {
+      minWidth: '60vw',
+      data: {
+        rowData: {
+          meetingTitle: '',
+          committee: '',
+          subcommittee: '',
+          cac: '',
+          meetingOnOrAfter: '',
+          meetingOnOrBefore: '',
+          members: [],
+        },
+        mode: 'Add',
+      },
     });
   }
 

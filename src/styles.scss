@@ -83,6 +83,17 @@ body {
     border-radius: 0.75em;
   }
 
+  .file-input-dropzone {
+  @apply border-2 p-2.5 rounded-lg border-gray-600 flex min-h-[5em]  w-[80%] shadow-xl gap-1  justify-center items-center;
+}
+
+.file-link {
+  @apply bg-transparent text-blue-800 flex items-center;
+}
+.compact-icon-button {
+  @include mat.icon-button-density(-3);
+}
+
   .mat-mdc-tab .mdc-tab__text-label,
   .mat-mdc-tab-link .mdc-tab__text-label {
     color: $primary;

@@ -1,0 +1,111 @@
+<h2 mat-dialog-title>
+  {{
+    data.mode === "add"
+      ? "Add Profile"
+      : data.mode === "edit"
+      ? "Edit Profile"
+      : "View Profile"
+  }}
+</h2>
+<mat-dialog-content>
+  <form
+    [formGroup]="profileForm"
+    class="grid grid-cols-2 gap-x-4 pt-2 sm:grid-cols-1 mt-3"
+  >
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>First Name</mat-label>
+      <input
+        [readonly]="data.mode === 'view'"
+        matInput
+        formControlName="firstName"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Last Name</mat-label>
+      <input
+        [readonly]="data.mode === 'view'"
+        matInput
+        formControlName="lastName"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full ">
+      <mat-label>Email</mat-label>
+      <input
+        [readonly]="data.mode === 'view'"
+        matInput
+        formControlName="email"
+      />
+    </mat-form-field>
+
+    @if(data.mode !== 'view') {
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Status</mat-label>
+      <mat-select [disabled]="data.mode === 'view'" formControlName="status">
+        <mat-option value="Active">Active</mat-option>
+        <mat-option value="Inactive">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full col-span-2">
+      <mat-label>Roles</mat-label>
+      <mat-select
+        [disabled]="data.mode === 'view'"
+        formControlName="roles"
+        multiple
+      >
+        <mat-option value="admin">Admin</mat-option>
+        <mat-option value="viewer">Viewer</mat-option>
+        <mat-option value="editor">Editor</mat-option>
+      </mat-select>
+    </mat-form-field>
+    } @else{
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Status</mat-label>
+      <input
+        [readonly]="data.mode === 'view'"
+        matInput
+        formControlName="status"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-full col-span-2">
+      <mat-label>Roles</mat-label>
+      <input
+        [readonly]="data.mode === 'view'"
+        matInput
+        formControlName="roles"
+      />
+    </mat-form-field>
+    }
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-stroked-button
+    type="button"
+    mat-dialog-close
+    (click)="onCancel()"
+    *ngIf="data.mode !== 'view'"
+  >
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    mat-dialog-close
+    (click)="onSave()"
+    *ngIf="data.mode !== 'view'"
+  >
+    Save
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    mat-dialog-close
+    *ngIf="data.mode === 'view'"
+  >
+    Close
+  </button>
+</mat-dialog-actions>
