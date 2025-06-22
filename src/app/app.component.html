@@ -81,9 +81,7 @@
           routerLink="/event-calendar"
           routerLinkActive="active"
         >
-          <mat-icon>
-            calendar_today
-          </mat-icon>
+          <mat-icon> calendar_today </mat-icon>
           <span>Event Calendar</span>
         </div>
         <div
@@ -95,30 +93,46 @@
           <mat-icon>help</mat-icon>
           <span>Help & Feedback</span>
         </div>
-        <div
-          class="nav-item"
-          matRipple
-          routerLink="/profile-management"
-          routerLinkActive="active"
-        >
-          <mat-icon>person</mat-icon>
-          <span>Profile Management</span>
-        </div>
-        <div
-          class="nav-item"
-          matRipple
-          routerLink="/roles-management"
-          routerLinkActive="active"
-        >
-          <mat-icon>security</mat-icon>
-          <span>Roles & Rights Management</span>
-        </div>
+       
+        <mat-expansion-panel class="nav-expansion-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="flex items-start nav-item">
+                <mat-icon>security</mat-icon>
+                <span>Administration</span>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="flex flex-col ">
+            <div
+              class="nav-item sub-item"
+              matRipple
+              routerLink="/profile-management"
+              routerLinkActive="active"
+            >
+              <mat-icon>person</mat-icon>
+              <span >Profile Management</span>
+            </div>
+            <div
+              class="nav-item sub-item"
+              matRipple
+              routerLink="/roles-management"
+              routerLinkActive="active"
+            >
+              <mat-icon>security</mat-icon>
+              <span >Roles & Rights Management</span>
+            </div>
+          </div>
+        </mat-expansion-panel>
       </mat-card-content>
     </mat-card>
   </mat-drawer>
 
   <mat-drawer-content>
-    <div class="p-5 w-full h-full min-h-screen" [ngClass]="{ 'pl-2.5': drawer.opened }">
+    <div
+      class="p-5 w-full h-full min-h-screen"
+      [ngClass]="{ 'pl-2.5': drawer.opened }"
+    >
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-content>

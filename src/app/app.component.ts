@@ -11,6 +11,7 @@ import { DemoComponent } from '../demo/demo.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     NgClass,
     RouterLink,
     RouterLinkActive,
+    MatExpansionModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
