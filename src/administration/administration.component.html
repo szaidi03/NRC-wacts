@@ -85,7 +85,12 @@
       <form class="grid grid-cols-4 gap-x-4 sm:grid-cols-1 mt-3">
         <mat-form-field appearance="outline" class="w-full col-span-2">
           <mat-label>Select Role</mat-label>
-          <mat-select multiple> </mat-select>
+          <mat-select multiple>
+            <mat-option value="admin">Admin</mat-option>
+            <mat-option value="user">User</mat-option>
+            <mat-option value="editor">Editor</mat-option>
+            <mat-option value="viewer">Viewer</mat-option>
+          </mat-select>
         </mat-form-field>
       </form>
       }

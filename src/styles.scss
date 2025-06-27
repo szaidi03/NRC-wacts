@@ -30,6 +30,11 @@ body {
 }
 
 :root {
+
+  .mat-expansion-panel-body{
+    padding: 0px !important;
+  }
+
   $primary: #1d326d;
 
   // TAB *****************************************************************************************
